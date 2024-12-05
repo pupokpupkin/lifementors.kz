@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курстар</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+       
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/originals/06/77/4f/06774f0480ca178a5acc26c51c16a16c.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #f0932b;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        
+        .search-box,
+        .category-filter {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .search-box input,
+        .category-filter select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus,
+        .category-filter select:focus {
+            border-color: #f0932b;
+            outline: none;
+            box-shadow: 0 0 8px rgba(240, 147, 43, 0.5);
+        }
+
+       
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .course-item {
+            background: linear-gradient(135deg, #f0932b, #e67e22);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        .course-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .course-item p {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .course-item a {
+            padding: 12px 25px;
+            background-color: white;
+            color: #f0932b;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(240, 147, 43, 0.3);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .course-item a:hover {
+            background-color: #333;
+            color: white;
+            box-shadow: 0 6px 14px rgba(240, 147, 43, 0.5);
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Курстар</h1>
+
+    <div class="search-box">
+        <input type="text" placeholder="Керекті курсты іздеу..." oninput="filterCourses(event)">
+    </div>
+
+    <div class="category-filter">
+        <select onchange="filterByCategory(event)">
+            <option value="all">Бәрі</option>
+            <option value="math">Математика</option>
+            <option value="physics">Физика</option>
+            <option value="programming">Программалау</option>
+            <option value="spiritual">Рухани даму</option>
+            <option value="language">Тіл</option>
+        </select>
+    </div>
+
+    <div class="course-grid">
+        <div class="course-item" data-category="math" onclick="openModal('Сызықтық алгебра - бұл математика саласындағы маңызды курс, ол векторлар мен матрицаларды зерттеуді қамтиды.')">
+            <i class="fas fa-calculator icon"></i>
+            <h3>Сызықтық алгебра</h3>
+            <p>Бағасы: 750₸</p>
+            <a href="linear_algebra.html">Курсқа тіркелу</a>
+        </div>
+        <div class="course-item" data-category="physics" onclick="openModal('Кванттық физика - микробөлшектердің қасиеттерін және олардың өзара әрекеттесуін зерттейтін физика саласы.')">
+            <i class="fas fa-atom icon"></i>
+            <h3>Кванттық физика</h3>
+            <p>Бағасы: 750₸</p>
+            <a href="quantum_physics.html">Курсқа тіркелу</a>
+        </div>
+        <div class="course-item" data-category="programming" onclick="openModal('Веб бағдарламалау - веб-сайттарды және веб-қосымшаларды жасау негіздерін үйрену.')">
+            <i class="fas fa-code icon"></i>
+            <h3>Веб бағдарламалау</h3>
+            <p>Бағасы: 750₸</p>
+            <a href="#">Курсқа тіркелу</a>
+        </div>
+        <div class="course-item" data-category="spiritual" onclick="openModal('Медитация және өзін дамыту курсы сізге өзіңіздің ішкі тыныштығыңызды табуға көмектеседі.')">
+            <i class="fas fa-brain icon"></i>
+            <h3>Медитация & Өзін дамыту</h3>
+            <p>Бағасы: 750₸</p>
+            <a href="#">Курсқа тіркелу</a>
+        </div>
+        <div class="course-item" data-category="language" onclick="openModal('Ағылшын тілі курсы сіздің сөйлеу, тыңдау және жазу дағдыларыңызды жетілдіреді.')">
+            <i class="fas fa-language icon"></i>
+            <h3>Ағылшын тілі</h3>
+            <p>Бағасы: 750₸</p>
+            <a href="english.html">Курсқа тіркелу</a>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script>
+        function filterCourses(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            const courses = document.querySelectorAll('.course-item');
+
+            courses.forEach(course => {
+                const courseName = course.querySelector('h3').textContent.toLowerCase();
+                course.style.display = courseName.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
+        function filterByCategory(event) {
+            const category = event.target.value;
+            const courses = document.querySelectorAll('.course-item');
+
+            courses.forEach(course => {
+                const courseCategory = course.getAttribute('data-category');
+                course.style.display = (category === 'all' || courseCategory === category) ? 'block' : 'none';
+            });
+        }
+
+        function openModal(description) {
+            document.getElementById('modal-description').textContent = description;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

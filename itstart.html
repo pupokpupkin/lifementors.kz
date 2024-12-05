@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepik.kz - Онлайн Курстар</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="https://i.ytimg.com/vi/hnobJxwXEEE/maxresdefault.jpg" alt="LifeMentors Logo" class="logo-image"> 
+            <h1>LifeMentors</h1>
+            <p>Онлайн курстар платформасы</p>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Басты бет</a></li>
+                <li><a href="courses.html">Курстар</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+                <li><a href="#faq">Жиі қойылатын сұрақтар</a></li> <!-- Ссылка на FAQ -->
+                <li><a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> Тіркелу</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h2>Білім алуға қош келдіңіз!</h2>
+            <p>Біздің платформада түрлі тақырыптар бойынша курстарды өтіп, білім мен дағдыларыңызды арттырыңыз.</p>
+            <a href="courses.html" class="btn btn-primary">Курстарды қарау</a>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Жиі қойылатын сұрақтар</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question">Курстарды қалай бастаймын?</button>
+                <div class="faq-answer">
+                    <p>Курсты бастау үшін алдымен тіркелуіңіз қажет. Содан кейін таңдаған курсыңызға өтіп, "Қатысу" батырмасын басыңыз.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Курстар қанша уақытты алады?</button>
+                <div class="faq-answer">
+                    <p>Әр курс ұзақтығы әртүрлі, бірақ орта есеппен 4-6 аптаға созылады. Курстың нақты уақыты оның сипаттамасында көрсетілген.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Курстар ақылы ма?</button>
+                <div class="faq-answer">
+                    <p>Көптеген курстар тегін. Дегенмен, арнайы сертификат алу үшін кейбір курстар ақылы болуы мүмкін.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Сертификаттарды қалай аламын?</button>
+                <div class="faq-answer">
+                    <p>Сертификат алу үшін курсты толық аяқтап, барлық тапсырмаларды орындау қажет. Сертификат курсты аяқтаған соң жеке кабинетте қолжетімді болады.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 LifeMentors. Барлық құқықтар қорғалған.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+
+</body>
+</html>

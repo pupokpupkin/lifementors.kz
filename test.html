@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ағылшын тілі деңгейін анықтау тесті</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #e0f7fa;
+            border-radius: 8px;
+        }
+        .result {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2a9d8f;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2a9d8f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #21867a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ағылшын тілі деңгейін анықтау тесті</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>1. "I ... a book every day." (Мен күн сайын кітап оқимын.)</p>
+            <label><input type="radio" name="q1" value="1"> reads</label><br>
+            <label><input type="radio" name="q1" value="2"> read</label><br>
+            <label><input type="radio" name="q1" value="0"> reading</label>
+        </div>
+        
+        <div class="question">
+            <p>2. "They ... to school every day." (Олар күн сайын мектепке барады.)</p>
+            <label><input type="radio" name="q2" value="2"> go</label><br>
+            <label><input type="radio" name="q2" value="0"> goes</label><br>
+            <label><input type="radio" name="q2" value="1"> going</label>
+        </div>
+
+        <div class="question">
+            <p>3. "She ... in Almaty." (Ол Алматыда тұрады.)</p>
+            <label><input type="radio" name="q3" value="0"> live</label><br>
+            <label><input type="radio" name="q3" value="2"> lives</label><br>
+            <label><input type="radio" name="q3" value="1"> living</label>
+        </div>
+
+        <div class="question">
+            <p>4. "We ... English." (Біз ағылшын тілін үйреніп жүрміз.)</p>
+            <label><input type="radio" name="q4" value="0"> learning</label><br>
+            <label><input type="radio" name="q4" value="2"> learn</label><br>
+            <label><input type="radio" name="q4" value="1"> learns</label>
+        </div>
+
+        <div class="question">
+            <p>5. "He ... soccer on weekends." (Ол демалыс күндері футбол ойнайды.)</p>
+            <label><input type="radio" name="q5" value="2"> plays</label><br>
+            <label><input type="radio" name="q5" value="0"> play</label><br>
+            <label><input type="radio" name="q5" value="1"> playing</label>
+        </div>
+
+        <button type="button" onclick="calculateResult()">Тесті аяқтау</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function calculateResult() {
+            let score = 0;
+            const form = document.forms['quizForm'];
+            
+            score += parseInt(form.q1.value) || 0;
+            score += parseInt(form.q2.value) || 0;
+            score += parseInt(form.q3.value) || 0;
+            score += parseInt(form.q4.value) || 0;
+            score += parseInt(form.q5.value) || 0;
+
+            let resultText = "";
+            if (score <= 3) {
+                resultText = "Сіздің деңгейіңіз: Бастапқы (A1)";
+            } else if (score <= 6) {
+                resultText = "Сіздің деңгейіңіз: Бастапқы орташадан жоғары (A2)";
+            } else if (score <= 8) {
+                resultText = "Сіздің деңгейіңіз: Орташа (B1)";
+            } else {
+                resultText = "Сіздің деңгейіңіз: Ортадан жоғары (B2)";
+            }
+
+            document.getElementById("result").textContent = resultText;
+        }
+    </script>
+</body>
+</html>

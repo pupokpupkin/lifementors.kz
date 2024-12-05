@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Физикадан тест</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #f39c12;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #f39c12;
+            font-size: 2.5em;
+            margin-top: 0.5em;
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: linear-gradient(145deg, #333, #1a1a1a);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .question:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .question h3 {
+            color: #ffcc70;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.1em;
+            color: #ffdd99;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #ffcc70;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s, border 0.3s;
+        }
+
+        input[type="radio"]:checked {
+            background-color: #ffcc70;
+            border: 2px solid #ffcc70;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ffb84d;
+            transform: scale(1.05);
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #292929;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Физикадан деңгейіңізді анықтау тесті</h1>
+        <div id="quiz">
+        </div>
+        <button onclick="submitQuiz()">Нәтижені көру</button>
+        <div id="result" class="result">
+            <h2>Нәтиже:</h2>
+            <p id="score"></p>
+            <p id="advice"></p>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "1. Күштің өлшем бірлігі қандай?", options: ["Ньютон", "Джоуль", "Ватт", "Паскаль"], answer: "Ньютон" },
+            { question: "2. Эйнштейннің әйгілі формуласы қандай?", options: ["E = mc^2", "F = ma", "V = IR", "P = IV"], answer: "E = mc^2" },
+            { question: "3. Дененің жылдамдығының өзгеру жылдамдығын қалай атайды?", options: ["Үдеу", "Жылдамдық", "Күш", "Қуат"], answer: "Үдеу" },
+            { question: "4. Кванттық механикада суперпозиция деген не?", options: ["Бөлшек екі күйде бір уақытта болуы мүмкін", "Жылдамдық және масса байланысы", "Тартылыс күшінің әсері", "Температураның өзгеруі"], answer: "Бөлшек екі күйде бір уақытта болуы мүмкін" },
+            { question: "5. 'P = IV' формуласы нені білдіреді?", options: ["Қуат", "Күш", "Жұмыс", "Жылдамдық"], answer: "Қуат" },
+            { question: "6. Қандай бөлшекке 'негізгі' бөлшек ретінде қарауға болады?", options: ["Электрон", "Мезон", "Фотон", "Тахион"], answer: "Электрон" },
+            { question: "7. Кванттық механикадағы белгілі емес қағидатының негізін қалаған ғалым кім?", options: ["Гейзенберг", "Ньютон", "Эйнштейн", "Галилей"], answer: "Гейзенберг" },
+            { question: "8. Толқынның ұзындығы 10 м, жиілігі 3 Гц. Толқынның жылдамдығы қандай?", options: ["30 м/с", "3 м/с", "13 м/с", "33 м/с"], answer: "30 м/с" },
+            { question: "9. Қай формула күшті сипаттайды?", options: ["F = ma", "E = mc^2", "V = IR", "P = IV"], answer: "F = ma" },
+            { question: "10. Жылудың энергия өлшем бірлігі қандай?", options: ["Джоуль", "Паскаль", "Ньютон", "Кулон"], answer: "Джоуль" }
+        ];
+
+        let score = 0;
+        const quizContainer = document.getElementById("quiz");
+
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+
+            const questionText = document.createElement("h3");
+            questionText.innerText = q.question;
+            questionDiv.appendChild(questionText);
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            q.options.forEach(option => {
+                const optionLabel = document.createElement("label");
+                const optionInput = document.createElement("input");
+
+                optionInput.type = "radio";
+                optionInput.name = "question" + index;
+                optionInput.value = option;
+
+                optionLabel.appendChild(optionInput);
+                optionLabel.append(option);
+                optionsDiv.appendChild(optionLabel);
+            });
+
+            questionDiv.appendChild(optionsDiv);
+            quizContainer.appendChild(questionDiv);
+        });
+
+        function submitQuiz() {
+            score = 0;
+            questions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                if (selectedOption && selectedOption.value === q.answer) {
+                    score++;
+                }
+            });
+
+            document.getElementById("score").innerText = `Сіздің ұпайыңыз: ${score} / ${questions.length}`;
+            
+            const advice = document.getElementById("advice");
+            if (score <= 3) {
+                advice.innerText = "Бастапқы деңгей. Негізгі физикалық түсініктерді оқуды жалғастырыңыз.";
+            } else if (score <= 7) {
+                advice.innerText = "Орташа деңгей. Қосымша теорияны оқып, формулаларды жаттығыңыз.";
+            } else {
+                advice.innerText = "Жоғары деңгей! Физикалық есептерді шешіп, өз білімін дамытыңыз.";
+            }
+
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
+``

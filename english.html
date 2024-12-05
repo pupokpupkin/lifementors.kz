@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ағылшын Тілі Курсы</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #f7b731 30%, #333 100%);
+            margin: 0;
+            padding: 0;
+            color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            border-radius: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #f0932b;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .course-description {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #ddd;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 15%;
+        }
+
+        .price {
+            text-align: center;
+            font-size: 2rem;
+            color: #28a745;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .enroll-button, .test-button {
+            display: block;
+            text-align: center;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #f0932b, #b37421);
+            color: #333;
+            padding: 15px 40px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin: 20px auto;
+            max-width: 300px;
+            box-shadow: 0 8px 16px rgba(240, 147, 43, 0.4);
+            transition: all 0.4s;
+        }
+
+        .enroll-button:hover, .test-button:hover {
+            background: linear-gradient(135deg, #b37421, #f0932b);
+            box-shadow: 0 12px 24px rgba(240, 147, 43, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .course-content {
+            margin-top: 50px;
+            padding: 0 10%;
+        }
+
+        .course-content h2 {
+            font-size: 2.3rem;
+            color: #f4f4f4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .course-content ul {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #ddd;
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-content ul li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .course-content ul li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-size: 1.3rem;
+        }
+
+        .instructor-info {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .instructor-info img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+        }
+
+        .instructor-info img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .instructor-info h3 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            color: #f0932b;
+        }
+
+        .instructor-info p {
+            font-size: 1.1rem;
+            color: #ddd;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .course-description {
+                padding: 0 5%;
+            }
+
+            .course-content ul li {
+                padding-left: 20px;
+            }
+
+            .course-content ul li::before {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Ағылшын Тілі</h1>
+
+        <p class="course-description">
+            Бұл курс сізге ағылшын тілінің негіздерін, грамматикасын және сөздік қорын терең меңгеруге көмектеседі. Ағылшын тілінде сөйлей алуды, түсінуді және жазуды үйренесіз. Курс мектеп, университет деңгейіндегі оқушыларға және ағылшын тілін үйренуге қызығушылық танытатындарға арналған.
+        </p>
+
+        <p class="price">Бағасы: 750₸</p>
+
+        <a href="https://forms.google.com/your-form-link" class="enroll-button">Курсқа тіркелу</a>
+        <a href="englishtest.html" class="test-button">Өз деңгейіңді анықтау</a>
+
+        <div class="course-content">
+            <h2>Курс мазмұны:</h2>
+            <ul>
+                <li>Ағылшын тілінің грамматикасы</li>
+                <li>Негізгі сөздік қор</li>
+                <li>Сөйлеу дағдылары</li>
+                <li>Оқу және түсіну</li>
+                <li>Тыңдау және жазу жаттығулары</li>
+                <li>Қолданбалы практикалық сабақтар</li>
+            </ul>
+        </div>
+
+        <div class="instructor-info">
+            <img src="instructor.jpg" alt="Instructor">
+            <h3>Зарина Өмірбековна</h3>
+            <p>10 жылдық тәжірибесі бар ағылшын тілі оқытушысы. Ағылшын тілін оқытуда заманауи әдістемелерді қолданады, әр студентке жеке көзқарас көрсетеді.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

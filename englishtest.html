@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ағылшын тілінен тест</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #f39c12;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1, h2 {
+            color: #f39c12;
+            font-size: 2.5em;
+            margin-top: 0.5em;
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: linear-gradient(145deg, #333, #1a1a1a);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+        
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .question:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+        
+        .question h3 {
+            color: #ffcc70;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.1em;
+            color: #ffdd99;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #ffcc70;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s, border 0.3s;
+        }
+        
+        input[type="radio"]:checked {
+            background-color: #ffcc70;
+            border: 2px solid #ffcc70;
+        }
+        
+        button {
+            padding: 15px 30px;
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ffb84d;
+            transform: scale(1.05);
+        }
+        
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #292929;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ағылшын тілінен деңгейіңізді анықтау тесті</h1>
+        <div id="quiz">
+        </div>
+        <button onclick="submitQuiz()">Нәтижені көру</button>
+        <div id="result" class="result">
+            <h2>Нәтиже:</h2>
+            <p id="score"></p>
+            <p id="advice"></p>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "1. 'Hello' сөзінің қазақша аудармасы қандай?", options: ["Сәлем", "Қалайсың", "Рахмет", "Жақсы"], answer: "Сәлем" },
+            { question: "2. 'I am going to the store.' сөйлемін аударыңыз.", options: ["Мен дүкенге бара жатырмын.", "Мен үйге бара жатырмын.", "Мен жұмысқа бара жатырмын.", "Мен мектепке бара жатырмын."], answer: "Мен дүкенге бара жатырмын." },
+            { question: "3. Көпше түрдегі дұрыс сөзді таңдаңыз: 'child'.", options: ["children", "childs", "childes", "childrens"], answer: "children" },
+            { question: "4. 'She ... to school every day.' бос орынды толтырыңыз.", options: ["goes", "go", "gone", "going"], answer: "goes" },
+            { question: "5. 'Quickly' сөзі қай сөз табына жатады?", options: ["Етістік", "Сын есім", "Үстеу", "Сан есім"], answer: "Үстеу" },
+            { question: "6. 'It is raining outside.' сөйлемінің дұрыс аудармасы қандай?", options: ["Сыртта жаңбыр жауып тұр.", "Сыртта күн ашық.", "Сыртта қар жауып тұр.", "Сыртта ыстық."], answer: "Сыртта жаңбыр жауып тұр." },
+            { question: "7. 'Beautiful' сөзінің қазақша аудармасы қандай?", options: ["Әдемі", "Тез", "Жылдам", "Күшті"], answer: "Әдемі" },
+            { question: "8. 'I have never ... to Paris.' сөйлеміндегі бос орынды толтырыңыз.", options: ["been", "be", "being", "am"], answer: "been" },
+            { question: "9. 'They ... dinner at 7 pm every day.' сөйлеміндегі бос орынды толтырыңыз.", options: ["have", "has", "having", "is have"], answer: "have" },
+            { question: "10. 'We ... English lessons twice a week.' сөйлеміндегі бос орынды толтырыңыз.", options: ["take", "takes", "taken", "taking"], answer: "take" },
+            { question: "11. 'She is ... than her brother.' бос орынды толтырыңыз.", options: ["taller", "tallest", "tall", "tally"], answer: "taller" },
+            { question: "12. 'Can I have ... water, please?' бос орынды толтырыңыз.", options: ["some", "any", "few", "a lot"], answer: "some" },
+            { question: "13. 'The cat ... on the roof all day.' бос орынды толтырыңыз.", options: ["has been", "have been", "being", "is been"], answer: "has been" },
+            { question: "14. 'Do you know where ... ?' бос орынды толтырыңыз.", options: ["she lives", "she live", "does she live", "is she living"], answer: "she lives" },
+            { question: "15. 'This book ... by an award-winning author.' бос орынды толтырыңыз.", options: ["was written", "wrote", "is write", "has write"], answer: "was written" },
+            { question: "16. 'They haven’t ... their homework yet.' бос орынды толтырыңыз.", options: ["done", "do", "did", "doing"], answer: "done" },
+            { question: "17. 'Let's meet at ... noon.' бос орынды толтырыңыз.", options: ["exact", "exactly", "exactness", "exacting"], answer: "exactly" },
+            { question: "18. 'She told him that ... the project.' бос орынды толтырыңыз.", options: ["she finished", "she had finished", "she has finished", "she finishes"], answer: "she had finished" },
+            { question: "19. 'I wish I ... a car.' бос орынды толтырыңыз.", options: ["had", "have", "has", "having"], answer: "had" },
+            { question: "20. 'He usually ... breakfast at 8 am.' бос орынды толтырыңыз.", options: ["eats", "eat", "eating", "eated"], answer: "eats" }
+        ];
+
+        let score = 0;
+        const quizContainer = document.getElementById("quiz");
+
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+
+            const questionText = document.createElement("h3");
+            questionText.innerText = q.question;
+            questionDiv.appendChild(questionText);
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            q.options.forEach(option => {
+                const optionLabel = document.createElement("label");
+                const optionInput = document.createElement("input");
+
+                optionInput.type = "radio";
+                optionInput.name = "question" + index;
+                optionInput.value = option;
+
+                optionLabel.appendChild(optionInput);
+                optionLabel.append(option);
+                optionsDiv.appendChild(optionLabel);
+            });
+
+            questionDiv.appendChild(optionsDiv);
+            quizContainer.appendChild(questionDiv);
+        });
+
+        function submitQuiz() {
+            score = 0;
+            questions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                if (selectedOption && selectedOption.value === q.answer) {
+                    score++;
+                }
+            });
+
+            document.getElementById("score").innerText = `Сіздің ұпайыңыз: ${score} / ${questions.length}`;
+            
+            const advice = document.getElementById("advice");
+            if (score <= 5) {
+                advice.innerText = "Бастапқы деңгей. Күнделікті ағылшын тілін жаттықтырыңыз және жаңа сөздерді есте сақтаңыз.";
+            } else if (score <= 12) {
+                advice.innerText = "Орташа деңгей. Қарапайым мәтіндер оқып, грамматикаға көңіл аударыңыз.";
+            } else {
+                advice.innerText = "Жоғары деңгей! Күрделі тақырыптарды зерттеп, тілдік машығыңызды одан әрі дамытыңыз.";
+            }
+
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>

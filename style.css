@@ -1,0 +1,242 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    background: url('https://i.pinimg.com/originals/06/77/4f/06774f0480ca178a5acc26c51c16a16c.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px 0;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.logo h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.logo p {
+    font-size: 16px;
+    color: #ff8c00;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.navbar a:hover {
+    background: #ff8c00;
+    color: #000;
+}
+
+.btn-register {
+    padding: 10px 20px;
+    background: #ff8c00;
+    color: #000000;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #ffffff;
+    color: #ff8c00;
+}
+
+.hero {
+    text-align: center;
+    padding: 150px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 0 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.hero h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 22px;
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff8c00, #ff5700);
+    color: #ffffff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: #ffffff;
+    color: #ff5700;
+    transform: scale(1.05);
+}
+
+.faq {
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    color: #f4f4f4;
+}
+
+.faq h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ff8c00;
+    text-transform: uppercase;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    background: #333333;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+    background: #444;
+    border: none;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 2px solid #ff8c00;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #ff8c00;
+    color: #000;
+}
+
+.faq-answer {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-top: 10px;
+    padding: 15px;
+    display: none;
+    background-color: #222;
+    border-left: 2px solid #ff8c00;
+}
+
+.faq-answer.show {
+    display: block;
+}
+
+.faq-item .faq-question {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: "+";
+    font-size: 24px;
+    color: #ff8c00;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-question::after {
+    transform: rotate(45deg);
+}
+
+.faq-question:hover::after {
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .faq h2 {
+        font-size: 28px;
+    }
+
+    .faq-question {
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .faq-answer {
+        font-size: 16px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 25px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    margin-top: 30px;
+    color: #ffffff;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(255, 140, 0, 0.8));
+    border-top: 1px solid #ff8c00;
+}

@@ -1,0 +1,125 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Оформление формы */
+.wrapper {
+    background: #fff;
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 2px solid #007BFF; /* Синий цвет для рамки */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Стили для input */
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 50px;
+    background: #eef2f7;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    outline: none;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: #0056b3; /* Более темный синий при фокусе */
+    background-color: #e3e9f1; /* Легкий оттенок синего при фокусе */
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #007BFF; /* Синяя иконка */
+    font-size: 20px;
+}
+
+/* Стили для "Remember me" и ссылки на восстановление пароля */
+.remember {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember label {
+    font-size: 14px;
+    color: #666;
+}
+
+.remember a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.remember a:hover {
+    color: #0056b3; /* Темно-синий при наведении */
+}
+
+/* Стили для кнопки "Login" */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #0056b3; /* Темнее при наведении */
+}
+
+/* Стили для ссылки на регистрацию */
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link p {
+    font-size: 14px;
+    color: #666;
+}
+
+.register-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #0056b3; /* Темно-синий при наведении */
+}

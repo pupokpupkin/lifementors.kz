@@ -1,0 +1,35 @@
+/* 1. Параграфы не внутри div */
+p:not(div p) {
+    color: blue; /* Синий цвет для параграфов вне div */
+}
+
+/* 2. Параграф с классом */
+p.classname {
+    font-weight: bold; /* Жирный шрифт для параграфов с классом */
+}
+
+/* 3. Параграф с идентификатором */
+p#unique {
+    background-color: yellow; /* Желтый фон для параграфа с ID */
+}
+
+/* 4. Заголовки h2 внутри div */
+div h2 {
+    text-decoration: underline; /* Подчеркивание заголовков внутри div */
+}
+
+/* 5. Заголовки h2 вне div */
+h2:not(div h2) {
+    color: red; /* Красный цвет для заголовков вне div */
+}
+
+/* 6. Параграфы внутри div */
+div p {
+    border: 1px solid black; /* Черная рамка для параграфов внутри div */
+}
+
+/* 7. Ссылки на Facebook */
+a[href*="facebook"] {
+    color: green; /* Зеленый цвет для ссылок на Facebook */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+}

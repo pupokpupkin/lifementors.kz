@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пайдаланушы Профилі</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000, #f57c00);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .profile-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: slideIn 1s ease-in-out;
+            border: 2px solid #f57c00;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f57c00;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #f57c00;
+        }
+
+        .profile-name {
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: #f57c00;
+            margin-bottom: 10px;
+        }
+
+        .profile-username {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+
+        .profile-info {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .profile-achievements {
+            font-size: 1.1rem;
+            color: #f57c00;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .profile-courses {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .profile-instagram {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #f57c00;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(245, 124, 0, 0.4);
+        }
+
+        .profile-instagram:hover {
+            background-color: #e65100;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(245, 124, 0, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            .profile-container {
+                padding: 20px;
+            }
+
+            .profile-avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-name {
+                font-size: 2rem;
+            }
+
+            .profile-info {
+                font-size: 0.9rem;
+                max-width: 100%;
+            }
+
+            .profile-instagram {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img src="https://via.placeholder.com/150" alt="User Avatar" class="profile-avatar">
+
+        <div class="profile-name">Bakytbek Dastan</div>
+        <div class="profile-username">@BakDastan__</div>
+
+        <div class="profile-info">
+            Сәлем! Менің атым Дастан, мен құмар веб-әзірлеушімін және технологияны жақсы көремін. Мен жаңа дағдыларды үйреніп, өз білімімді басқалармен бөліскенді ұнатамын. Әрқашан жетілдіруге және жетілдіруге ұмтылыңыз!
+        </div>
+
+        <div class="profile-achievements">
+            Жетістіктер: Курс Білуші, Талапкер, Веб Гуру
+        </div>
+
+        <div class="profile-courses">
+            Өткен курстар саны: 12
+        </div>
+
+        <a href="https://instagram.com/johndoe" class="profile-instagram" target="_blank">
+            Инстаграмға тіркелу
+        </a>
+    </div>
+</body>
+</html>
